@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.madgag</groupId>
     <artifactId>android-maven-plugin</artifactId>
-    <version>3.0.0-alpha-13.99.0.1</version>
+    <version>3.0.0-alpha-13.99.0.2-SNAPSHOT</version>
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
