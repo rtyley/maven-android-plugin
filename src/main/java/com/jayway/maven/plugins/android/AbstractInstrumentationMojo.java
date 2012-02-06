@@ -331,9 +331,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractAndroidMojo {
             }
         };
 
-        // if (parsedTakeScreenshots) {
-            instrumentationTestExecutor = new ScreenshotServiceWrapper(instrumentationTestExecutor, project);
-        // }
+        instrumentationTestExecutor = new ScreenshotServiceWrapper(instrumentationTestExecutor, project);
 
         doWithDevices(instrumentationTestExecutor);
     }
