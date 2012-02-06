@@ -19,7 +19,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.madgag</groupId>
     <artifactId>android-maven-plugin</artifactId>
-    <version>3.1.1.99.0.2-UNOFFICIAL-ROBERTO-RELEASE</version>
+    <version>3.1.1.99.0.3-UNOFFICIAL-ROBERTO-RELEASE-SNAPSHOT</version>
     <parent>
         <groupId>org.sonatype.oss</groupId>
         <artifactId>oss-parent</artifactId>
