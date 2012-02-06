@@ -19,7 +19,7 @@
     <sourceDirectory>src</sourceDirectory>
     <plugins>
       <plugin>
-        <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+        <groupId>com.madgag</groupId>
         <artifactId>android-maven-plugin</artifactId>
         <extensions>true</extensions>
         <executions>

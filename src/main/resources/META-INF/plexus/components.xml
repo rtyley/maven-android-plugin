@@ -26,14 +26,14 @@
             <configuration>
                 <phases>
                     <generate-sources>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:generate-sources
+                        com.madgag:android-maven-plugin:generate-sources
                     </generate-sources>
                     <process-resources>org.apache.maven.plugins:maven-resources-plugin:resources</process-resources>
                     <compile>
                         org.apache.maven.plugins:maven-compiler-plugin:compile
                     </compile>
                     <process-classes>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:proguard
+                        com.madgag:android-maven-plugin:proguard
                     </process-classes>
                     <process-test-resources>
                         org.apache.maven.plugins:maven-resources-plugin:testResources
@@ -41,20 +41,20 @@
                     <test-compile>org.apache.maven.plugins:maven-compiler-plugin:testCompile</test-compile>
                     <test>org.apache.maven.plugins:maven-surefire-plugin:test</test>
                     <prepare-package>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:dex
+                        com.madgag:android-maven-plugin:dex
                     </prepare-package>
                     <package>
                     	org.apache.maven.plugins:maven-jar-plugin:jar,
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:apk
+                        com.madgag:android-maven-plugin:apk
                     </package>
                     <install>
                         org.apache.maven.plugins:maven-install-plugin:install
                     </install>
                     <pre-integration-test>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:internal-pre-integration-test
+                        com.madgag:android-maven-plugin:internal-pre-integration-test
                     </pre-integration-test>
                     <integration-test>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:internal-integration-test
+                        com.madgag:android-maven-plugin:internal-integration-test
                     </integration-test>
                     <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
                 </phases>
@@ -71,14 +71,14 @@
             <configuration>
                 <phases>
                     <clean>
-                       org.apache.maven.plugins:maven-clean-plugin:clean,com.jayway.maven.plugins.android.generation2:android-maven-plugin:clean
+                       org.apache.maven.plugins:maven-clean-plugin:clean,com.madgag:android-maven-plugin:clean
                     </clean>
                     <generate-sources>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:generate-sources
+                        com.madgag:android-maven-plugin:generate-sources
                     </generate-sources>
                     <process-resources>org.apache.maven.plugins:maven-resources-plugin:resources</process-resources>
                     <compile>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:ndk-build
+                        com.madgag:android-maven-plugin:ndk-build
                     </compile>
                     <install>
                         org.apache.maven.plugins:maven-install-plugin:install
@@ -98,14 +98,14 @@
             <configuration>
                 <phases>
                     <clean>
-                       org.apache.maven.plugins:maven-clean-plugin:clean,com.jayway.maven.plugins.android.generation2:android-maven-plugin:clean
+                       org.apache.maven.plugins:maven-clean-plugin:clean,com.madgag:android-maven-plugin:clean
                     </clean>
                     <generate-sources>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:generate-sources
+                        com.madgag:android-maven-plugin:generate-sources
                     </generate-sources>
                     <process-resources>org.apache.maven.plugins:maven-resources-plugin:resources</process-resources>
                     <compile>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:ndk-build
+                        com.madgag:android-maven-plugin:ndk-build
                     </compile>
                     <install>
                         org.apache.maven.plugins:maven-install-plugin:install
@@ -154,14 +154,14 @@
             <configuration>
                 <phases>
                     <generate-sources>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:generate-sources
+                        com.madgag:android-maven-plugin:generate-sources
                     </generate-sources>
                     <process-resources>org.apache.maven.plugins:maven-resources-plugin:resources</process-resources>
                     <compile>
                         org.apache.maven.plugins:maven-compiler-plugin:compile
                     </compile>
                     <process-classes>
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:proguard
+                        com.madgag:android-maven-plugin:proguard
                     </process-classes>
                     <process-test-resources>
                         org.apache.maven.plugins:maven-resources-plugin:testResources
@@ -170,7 +170,7 @@
                     <test>org.apache.maven.plugins:maven-surefire-plugin:test</test>
                     <package>
                     	org.apache.maven.plugins:maven-jar-plugin:jar,
-                        com.jayway.maven.plugins.android.generation2:android-maven-plugin:apklib
+                        com.madgag:android-maven-plugin:apklib
                     </package>
                     <install>
                         org.apache.maven.plugins:maven-install-plugin:install

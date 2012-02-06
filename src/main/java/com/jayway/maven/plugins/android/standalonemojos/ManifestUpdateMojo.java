@@ -68,7 +68,7 @@ public class ManifestUpdateMojo extends AbstractAndroidMojo {
      * You can configure attributes in the plugin configuration like so
      * <pre>
      *   &lt;plugin&gt;
-     *     &lt;groupId&gt;com.jayway.maven.plugins.android.generation2&lt;/groupId&gt;
+     *     &lt;groupId&gt;com.madgag&lt;/groupId&gt;
      *     &lt;artifactId&gt;android-maven-plugin&lt;/artifactId&gt;
      *     &lt;executions&gt;
      *       &lt;execution&gt;
