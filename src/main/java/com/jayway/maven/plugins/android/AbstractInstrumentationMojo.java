@@ -279,7 +279,7 @@ public abstract class AbstractInstrumentationMojo extends AbstractAndroidMojo {
                     "see http://developer.android.com/guide/developing/testing/testing_otheride.html");
         }
 
-        doWithDevices(new DeviceCallback() {
+        DeviceCallback instrumentationTestExecutor = new DeviceCallback() {
             public void doWithDevice(final IDevice device) throws MojoExecutionException, MojoFailureException {
                 RemoteAndroidTestRunner remoteAndroidTestRunner =
                     new RemoteAndroidTestRunner(parsedInstrumentationPackage, parsedInstrumentationRunner, device);
@@ -329,7 +329,13 @@ public abstract class AbstractInstrumentationMojo extends AbstractAndroidMojo {
                     throw new MojoExecutionException("IO problem", e);
                 }
             }
-        });
+        };
+
+        // if (parsedTakeScreenshots) {
+            instrumentationTestExecutor = new ScreenshotServiceWrapper(instrumentationTestExecutor, project);
+        // }
+
+        doWithDevices(instrumentationTestExecutor);
     }
 
     private void parseConfiguration() {
