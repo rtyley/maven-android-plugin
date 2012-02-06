@@ -17,12 +17,17 @@
 -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+    <groupId>com.madgag</groupId>
     <artifactId>android-maven-plugin</artifactId>
     <version>3.1.2-SNAPSHOT</version>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
     <packaging>maven-plugin</packaging>
     <name>Android Maven Plugin - android-maven-plugin</name>
-    <description>Maven Plugin for Android Development</description>
+    <description>Maven Plugin for Android Development (unofficial patched build by Roberto Tyley)</description>
     <url>http://code.google.com/p/maven-android-plugin</url>
     <inceptionYear>2008</inceptionYear>
     <properties>
@@ -36,9 +41,9 @@
         <maven.api.version>3.0.3</maven.api.version>
     </properties>
     <scm>
-        <url>http://github.com/jayway/maven-android-plugin/tree/${scm.branch}</url>
-        <connection>scm:git:git://github.com/jayway/maven-android-plugin.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/jayway/maven-android-plugin.git</developerConnection>
+        <url>http://github.com/rtyley/maven-android-plugin/tree/${scm.branch}</url>
+        <connection>scm:git:git://github.com/rtyley/maven-android-plugin.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rtyley/maven-android-plugin.git</developerConnection>
     </scm>
     <issueManagement>
         <system>Google Code Issue Tracking</system>
@@ -252,10 +257,6 @@
                     <version>2.5</version>
                 </plugin>
                 <plugin>
-                    <artifactId>maven-site-plugin</artifactId>
-                    <version>3.0</version>
-                </plugin>
-                <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.10</version>
                 </plugin>
@@ -275,7 +276,7 @@
                     <autoVersionSubmodules>true</autoVersionSubmodules>
                     <useReleaseProfile>false</useReleaseProfile>
                     <arguments>-Pofficial-release</arguments>
-                    <goals>plugin:report deploy site-deploy</goals>
+                    <goals>plugin:report deploy</goals>
                 </configuration>
             </plugin>
             <plugin>
@@ -309,25 +310,6 @@
             </plugin>
         </plugins>
     </build>
-
-    <distributionManagement>
-        <repository>
-            <id>oss.sonatype.org-jayway-staging</id>
-            <name>OpenSource Release Staging on Sonatype.org</name>
-            <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-        <snapshotRepository>
-            <id>oss.sonatype.org-jayway-snapshots</id>
-            <name>Jayway OpenSource SNAPSHOTs on Sonatype.org</name>
-            <url>http://oss.sonatype.org/content/repositories/jayway-snapshots/</url>
-        </snapshotRepository>
-        <site>
-            <id>maven-android-plugin-m2site.googlecode.com</id>
-            <name>maven-android-plugin-m2site on Google Code</name>
-            <url>${env.MAVEN_ANDROID_PLUGIN_M2SITE_SVN_WORKINGCOPY}</url>
-        </site>
-    </distributionManagement>
-
     <reporting>
         <plugins>
             <plugin>
