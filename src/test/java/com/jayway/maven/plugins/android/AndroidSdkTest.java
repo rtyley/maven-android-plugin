@@ -79,16 +79,6 @@ public class AndroidSdkTest {
         Assert.assertEquals(new File(path, "/platforms/android-3"),sdkTestSupport.getSdk_with_platform_1_5().getPlatform());
     }
 
-    @Test
-    public void givenPlatformNullThenPlatformisSomethingValidLooking() throws IllegalAccessException, URISyntaxException {
-        final File path = (File) ReflectionUtils.getValueIncludingSuperclasses("sdkPath",sdkTestSupport.getSdk_with_platform_default());
-        final File platform = sdkTestSupport.getSdk_with_platform_default().getPlatform();
-        final String platformPath = platform.getAbsolutePath();
-        final String pathPath = path.getAbsolutePath();
-        final String regex = new File(pathPath + "/platforms/android-.*").toURI().toString();
-        Assert.assertTrue(new File(platformPath).toURI().toString().matches(regex));
-    }
-
     /**
      * Test all available platforms and api level versions. All have to be installed locally
      * for this test to pass including the obsolete ones.
