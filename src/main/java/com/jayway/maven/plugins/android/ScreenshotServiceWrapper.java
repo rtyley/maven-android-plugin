@@ -16,13 +16,13 @@ import org.apache.maven.project.MavenProject;
 public class ScreenshotServiceWrapper implements DeviceCallback {
 
     private final DeviceCallback delegate;
-    private final File screenshotDirectory;
+    private final File screenshotParentDir;
 
     public ScreenshotServiceWrapper(DeviceCallback delegate, MavenProject project) {
         this.delegate = delegate;
-        screenshotDirectory = new File(project.getBuild().getDirectory(), "screenshots");
+        screenshotParentDir = new File(project.getBuild().getDirectory(), "screenshots");
         try {
-            forceMkdir(screenshotDirectory);
+            forceMkdir(screenshotParentDir);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -32,10 +32,12 @@ public class ScreenshotServiceWrapper implements DeviceCallback {
     public void doWithDevice(final IDevice device) throws MojoExecutionException, MojoFailureException {
         String deviceName = getDescriptiveName(device);
 
-        File gifFile = new File(screenshotDirectory, deviceName+".gif");
+        File deviceScreenshotDir = new File(screenshotParentDir, deviceName);
+        File deviceGifFile = new File(screenshotParentDir, deviceName + ".gif");
+
         OnDemandScreenshotService screenshotService = new OnDemandScreenshotService(device,
-                new ImageSaver(screenshotDirectory, deviceName),
-                new AnimatedGifCreator(gifFile)
+                new ImageSaver(deviceScreenshotDir),
+                new AnimatedGifCreator(deviceGifFile)
                 );
 
         screenshotService.start();
