@@ -11,29 +11,30 @@ import java.io.File;
 import java.io.IOException;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
 import org.apache.maven.project.MavenProject;
 
 public class ScreenshotServiceWrapper implements DeviceCallback {
 
     private final DeviceCallback delegate;
+    private final Log log;
     private final File screenshotParentDir;
 
-    public ScreenshotServiceWrapper(DeviceCallback delegate, MavenProject project) {
+    public ScreenshotServiceWrapper(DeviceCallback delegate, MavenProject project, Log log) {
         this.delegate = delegate;
+        this.log = log;
         screenshotParentDir = new File(project.getBuild().getDirectory(), "screenshots");
-        try {
-            forceMkdir(screenshotParentDir);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        create(screenshotParentDir);
     }
+
 
     @Override
     public void doWithDevice(final IDevice device) throws MojoExecutionException, MojoFailureException {
         String deviceName = getDescriptiveName(device);
 
-        File deviceScreenshotDir = new File(screenshotParentDir, deviceName);
         File deviceGifFile = new File(screenshotParentDir, deviceName + ".gif");
+        File deviceScreenshotDir = new File(screenshotParentDir, deviceName);
+        create(deviceScreenshotDir);
 
         OnDemandScreenshotService screenshotService = new OnDemandScreenshotService(device,
                 new ImageSaver(deviceScreenshotDir),
@@ -45,5 +46,13 @@ public class ScreenshotServiceWrapper implements DeviceCallback {
         delegate.doWithDevice(device);
 
         screenshotService.finish();
+    }
+
+    private void create(File dir) {
+        try {
+            forceMkdir(dir);
+        } catch (IOException e) {
+            log.warn("Unable to create screenshot directory: "+screenshotParentDir.getAbsolutePath(), e);
+        }
     }
 }
