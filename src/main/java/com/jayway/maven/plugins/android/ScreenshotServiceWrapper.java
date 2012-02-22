@@ -1,5 +1,6 @@
 package com.jayway.maven.plugins.android;
 
+import static com.github.rtyley.android.screenshot.paparazzo.processors.util.Dimensions.square;
 import static com.jayway.maven.plugins.android.common.DeviceHelper.getDescriptiveName;
 import static org.apache.commons.io.FileUtils.forceMkdir;
 
@@ -9,6 +10,9 @@ import com.github.rtyley.android.screenshot.paparazzo.processors.AnimatedGifCrea
 import com.github.rtyley.android.screenshot.paparazzo.processors.ImageSaver;
 import java.io.File;
 import java.io.IOException;
+
+import com.github.rtyley.android.screenshot.paparazzo.processors.ImageScaler;
+import com.github.rtyley.android.screenshot.paparazzo.processors.util.Dimensions;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugin.logging.Log;
@@ -38,7 +42,7 @@ public class ScreenshotServiceWrapper implements DeviceCallback {
 
         OnDemandScreenshotService screenshotService = new OnDemandScreenshotService(device,
                 new ImageSaver(deviceScreenshotDir),
-                new AnimatedGifCreator(deviceGifFile)
+                new ImageScaler(new AnimatedGifCreator(deviceGifFile), square(320))
                 );
 
         screenshotService.start();
